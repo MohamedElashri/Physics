@@ -1,5 +1,5 @@
 # Physics
-Some physics analysis and tools I'm using in my life
+Some physics analysis and tools I'm using/used in my life
 
 1-  [GR package](https://github.com/MohamedElashri/Physics/blob/master/GR.nb)
 
