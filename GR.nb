@@ -10,34 +10,40 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     49070,       1608]
-NotebookOptionsPosition[     44494,       1459]
-NotebookOutlinePosition[     45271,       1484]
-CellTagsIndexPosition[     45228,       1481]
+NotebookDataLength[     60451,       1717]
+NotebookOptionsPosition[     51501,       1567]
+NotebookOutlinePosition[     52279,       1592]
+CellTagsIndexPosition[     52236,       1589]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["Curvature and the Einstein Equation", "Subtitle"],
+Cell["Curvature and the Einstein Equation", "Subtitle",ExpressionUUID->"24a0c237-482d-47e9-93c4-b53a44aa94ce"],
 
 Cell[TextData[{
- StyleBox["  F",
+ StyleBox["F",
   FontVariations->{"CompatibilityType"->0}],
  "rom a given metric ",
  Cell[BoxData[
   FormBox[
    SubscriptBox[
     StyleBox["g",
-     FontSlant->"Italic"], "\[Alpha]\[Beta]"], TraditionalForm]]],
- " , Program computes the components of the following: the inverse metric, ",
+     FontSlant->"Italic"], "\[Alpha]\[Beta]"], TraditionalForm]],
+  ExpressionUUID->"dc0b5e1a-0270-40e9-962c-c06c3bc74c67"],
+ " , This script computes the components of the following: the inverse \
+metric, ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["g", "\[Lambda]\[Sigma]"], TraditionalForm]]],
- ", the Christoffel symbols or affine connection,"
+   SuperscriptBox["g", "\[Lambda]\[Sigma]"], TraditionalForm]],ExpressionUUID->
+  "dd898bff-ce1f-4a48-bed7-8d50f124f953"],
+ ", the Christoffel symbols:"
 }], "Text",
- CellChangeTimes->{{3.691338229708471*^9, 3.6913382352937727`*^9}}],
+ CellChangeTimes->{{3.691338229708471*^9, 3.6913382352937727`*^9}, {
+  3.80827695214835*^9, 
+  3.8082769829187403`*^9}},ExpressionUUID->"7d415b5f-6396-44ae-81a8-\
+c44d02be53ae"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -58,25 +64,31 @@ Cell[TextData[{
         SubscriptBox["g", "\[Sigma]\[Mu]"]}], "-", 
        RowBox[{
         SubscriptBox["\[PartialD]", "\[Sigma]"], " ", 
-        SubscriptBox["g", "\[Mu]\[Nu]"]}]}], ")"}]}]}], TraditionalForm]]],
+        SubscriptBox["g", "\[Mu]\[Nu]"]}]}], ")"}]}]}], TraditionalForm]],
+  ExpressionUUID->"ddc31a54-4d0a-4ab9-86eb-cec999adb969"],
  ","
-}], "Text"],
+}], "Text",ExpressionUUID->"f64bbdfd-f97b-4d2f-9f29-2148c48d6935"],
 
 Cell[TextData[{
  " ( ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[PartialD]", 
-    RowBox[{"\[Alpha]", "  "}]], TraditionalForm]]],
+    RowBox[{"\[Alpha]", "  "}]], TraditionalForm]],ExpressionUUID->
+  "832da714-db44-484e-a159-de6ab5020306"],
  "stands for the partial derivative ",
  Cell[BoxData[
   FormBox[
    RowBox[{"\[PartialD]", 
     RowBox[{"/", 
      RowBox[{"\[PartialD]", 
-      SuperscriptBox["x", "\[Alpha]"]}]}]}], TraditionalForm]]],
- "), the Riemann tensor,"
-}], "Text"],
+      SuperscriptBox["x", "\[Alpha]"]}]}]}], TraditionalForm]],ExpressionUUID->
+  "80ee67db-e82d-4cbf-a852-7682eb1b51fc"],
+ "), the Riemann tensor:"
+}], "Text",
+ CellChangeTimes->{{3.8082769868380947`*^9, 
+  3.808276988002616*^9}},ExpressionUUID->"3804a6b7-863d-4991-acaf-\
+8e965e8be8a2"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -105,11 +117,15 @@ Cell[TextData[{
        SuperscriptBox["\[CapitalGamma]", "\[Eta]"], "\[Mu]\[Nu]"], 
       SubscriptBox[
        SuperscriptBox["\[CapitalGamma]", "\[Lambda]"], 
-       "\[Eta]\[Sigma]"]}]}]}], TraditionalForm]]],
+       "\[Eta]\[Sigma]"]}]}]}], TraditionalForm]],ExpressionUUID->
+  "6a17d6e9-f2d5-4aea-a6b1-48953e73ece6"],
  ","
-}], "Text"],
+}], "Text",ExpressionUUID->"cea14446-3463-4aca-820e-0f35adad1f2b"],
 
-Cell["the Ricci tensor", "Text"],
+Cell["the Ricci tensor:", "Text",
+ CellChangeTimes->{
+  3.808276990254513*^9},ExpressionUUID->"181e598c-3c59-4bd9-8052-\
+63b951cf200b"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -118,11 +134,14 @@ Cell[TextData[{
     SubscriptBox["R", "\[Mu]\[Nu]"], "=", 
     SubscriptBox[
      SuperscriptBox["R", "\[Lambda]"], "\[Mu]\[Lambda]\[Nu]"]}], 
-   TraditionalForm]]],
+   TraditionalForm]],ExpressionUUID->"d11a53bd-470f-4e63-8bde-49eef7ed9841"],
  ","
-}], "Text"],
+}], "Text",ExpressionUUID->"a4f0ee7e-5100-4870-a7ef-e2e8a0b54009"],
 
-Cell["the scalar curvature,", "Text"],
+Cell["the scalar curvature:", "Text",
+ CellChangeTimes->{{3.8082769947149415`*^9, 
+  3.8082769951866446`*^9}},ExpressionUUID->"ac73f4ef-ccbb-4fdc-9461-\
+64ebb60cb869"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -130,11 +149,12 @@ Cell[TextData[{
    RowBox[{"R", "=", 
     RowBox[{
      SuperscriptBox["g", "\[Mu]\[Nu]"], 
-     SubscriptBox["R", "\[Mu]\[Nu]"]}]}], TraditionalForm]]],
+     SubscriptBox["R", "\[Mu]\[Nu]"]}]}], TraditionalForm]],ExpressionUUID->
+  "9a2ba82d-3554-4be3-954a-df8687dd260c"],
  ","
-}], "Text"],
+}], "Text",ExpressionUUID->"39a85e12-26ad-41c9-971e-066c0aeeb8c9"],
 
-Cell["and the Einstein tensor,", "Text"],
+Cell["and the Einstein tensor,", "Text",ExpressionUUID->"b88a402b-f9e8-45ec-bb38-dc427800b7e6"],
 
 Cell[TextData[{
  " ",
@@ -146,15 +166,17 @@ Cell[TextData[{
      SubscriptBox["R", "\[Mu]\[Nu]"], "-", 
      RowBox[{
       FractionBox["1", "2"], 
-      SubscriptBox["g", "\[Mu]\[Nu]"], "R"}]}]}], TraditionalForm]]],
+      SubscriptBox["g", "\[Mu]\[Nu]"], "R"}]}]}], TraditionalForm]],
+  ExpressionUUID->"a1170380-767f-4f91-b8a0-e589a68fedf9"],
  "."
-}], "Text"],
+}], "Text",ExpressionUUID->"1337dd83-9d1d-4f5b-b5ba-3a8c5c0ad83e"],
 
 Cell[TextData[{
  "You must input the covariant components of the metric tensor ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["g", "\[Mu]\[Nu]"], TraditionalForm]]],
+   SubscriptBox["g", "\[Mu]\[Nu]"], TraditionalForm]],ExpressionUUID->
+  "baf77215-a77a-4436-beab-94215123c4d0"],
  " by editing the relevant input line in this ",
  StyleBox["Mathematica",
   FontSlant->"Italic"],
@@ -165,17 +187,17 @@ All the components computed are in the ",
   FontSlant->"Italic"],
  StyleBox["in which the metric was specified. ",
   FontVariations->{"CompatibilityType"->0}]
-}], "Text"],
+}], "Text",ExpressionUUID->"72670f58-cc4a-4d63-838b-7f07209f6483"],
 
 Cell[CellGroupData[{
 
-Cell["Clearing the values of symbols:", "Subsubsection"],
+Cell["Clearing the values of symbols:", "Subsubsection",ExpressionUUID->"8c2dc73e-d277-4a5f-a2b8-23445dbbb418"],
 
 Cell["\<\
 First clear any values that may already have been assigned to the names of \
 the various objects to be calculated. The names of the coordinates that you \
 will use are also cleared.\
-\>", "Text"],
+\>", "Text",ExpressionUUID->"dc8c94b8-1b9e-47ad-bdea-4df09f5b54b1"],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
@@ -183,12 +205,13 @@ Cell[BoxData[
   "coord", ",", " ", "metric", ",", "inversemetric", ",", " ", "affine", ",", 
    " ", "riemann", ",", " ", "ricci", ",", " ", "scalar", ",", " ", 
    "einstein", ",", "r", ",", "\[Theta]", ",", "\[Phi]", ",", "t"}], 
-  "]"}]], "Input"]
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"64d7de31-598a-4ce1-bb73-553fecc3afd3"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Setting the dimension:", "Subsubsection"],
+Cell["Setting the dimension:", "Subsubsection",ExpressionUUID->"1cfdb4fa-0ebb-474a-bba4-9442c39e6ec0"],
 
 Cell[TextData[{
  "The dimension ",
@@ -196,29 +219,35 @@ Cell[TextData[{
   FontWeight->"Bold"],
  StyleBox["of the spacetime (or space) must be set:",
   FontVariations->{"CompatibilityType"->0}]
-}], "Text"],
+}], "Text",ExpressionUUID->"3249a85a-f6b4-46c5-8bf4-b03c452d1492"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"n", "=", "4"}]], "Input"],
+ RowBox[{"n", "=", "4"}]], "Input",
+ CellLabel->"In[2]:=",ExpressionUUID->"728604a6-26bd-4b7b-8264-b1a71103a453"],
 
 Cell[BoxData["4"], "Output",
  CellChangeTimes->{
   3.6912626775044975`*^9, 3.691262791778488*^9, 3.691262952653943*^9, 
    3.6912637450900526`*^9, {3.691337892082588*^9, 3.6913379010930414`*^9}, 
-   3.6913380532917356`*^9, 3.691338557494099*^9}]
+   3.6913380532917356`*^9, 3.691338557494099*^9, 3.808277212965059*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"1d405a38-68f1-4b6f-b81a-c24544530106"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Defining a list of coordinates:", "Subsubsection"],
+Cell["Defining a list of coordinates:", "Subsubsection",ExpressionUUID->"1b115f16-7720-4b86-9e54-1e3db19e832e"],
 
 Cell["\<\
-The example given here is the Schwarzschild metric. The coordinate choice of \
-Schwarzschild is appropriate for this spherically symmetric spacetime. \
-\>", "Text"],
+The example given here is the Robertson-Walker metric metric. The coordinate \
+choice of Schwarzschild is appropriate for this spherically symmetric \
+spacetime. \
+\>", "Text",
+ CellChangeTimes->{
+  3.8082774498329926`*^9},ExpressionUUID->"37e4cece-0041-4d91-8c08-\
+96cd9f0e130a"],
 
 Cell[CellGroupData[{
 
@@ -227,7 +256,8 @@ Cell[BoxData[
   RowBox[{"coord", " ", "=", " ", 
    RowBox[{"{", 
     RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]", ",", "t"}], "}"}]}],
-  FontWeight->"Bold"]], "Input"],
+  FontWeight->"Bold"]], "Input",
+ CellLabel->"In[3]:=",ExpressionUUID->"c9d50082-97f4-481f-9c86-880680c07c28"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -235,7 +265,8 @@ Cell[BoxData[
  CellChangeTimes->{
   3.6912626775284977`*^9, 3.6912627917941155`*^9, 3.691262952685038*^9, 
    3.6912637451220546`*^9, {3.691337892098215*^9, 3.6913379010930414`*^9}, 
-   3.6913380533073635`*^9, 3.691338557501105*^9}]
+   3.6913380533073635`*^9, 3.691338557501105*^9, 3.8082772169492497`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"f8142e4c-e0de-4c0d-a7e2-38168fc1ac1f"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -259,25 +290,29 @@ indices range over ",
   FontVariations->{"CompatibilityType"->0}],
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["x", "4"], TraditionalForm]]],
+   SuperscriptBox["x", "4"], TraditionalForm]],ExpressionUUID->
+  "b54faf64-5de0-4180-85c9-ade2609dbb4f"],
  " is the same as ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["x", "0"], TraditionalForm]]],
+   SuperscriptBox["x", "0"], TraditionalForm]],ExpressionUUID->
+  "73bb5a94-a2a6-476a-b5cf-d4ef901c4bbb"],
  " used in the text. "
-}], "Text"]
+}], "Text",ExpressionUUID->"fffe87bc-481e-46a0-8951-70655ebf57af"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Defining the metric:", "Subsubsection"],
+Cell["Defining the metric:", "Subsubsection",ExpressionUUID->"882cce5f-074b-4650-836c-548168237361"],
 
 Cell["\<\
 Input the metric as a list of lists, i.e., as a matrix. You can input the \
 components of any metric here, but you must specify them as explicit \
 functions of the coordinates.\
 \>", "Text",
- CellChangeTimes->{{3.69126372338431*^9, 3.6912637271846128`*^9}}],
+ CellChangeTimes->{{3.69126372338431*^9, 
+  3.6912637271846128`*^9}},ExpressionUUID->"ff675e26-7b87-4210-b40c-\
+527ef5177d35"],
 
 Cell[CellGroupData[{
 
@@ -320,7 +355,8 @@ Cell[BoxData[{
  CellChangeTimes->{{3.691262497317894*^9, 3.6912625858393254`*^9}, 
    3.6912627733208475`*^9, {3.6912628872807617`*^9, 3.6912629418973384`*^9}, {
    3.6912637301528506`*^9, 3.6912637388575497`*^9}, {3.6913378510547724`*^9, 
-   3.6913378988678637`*^9}}],
+   3.6913378988678637`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"5862d49b-9cba-4871-be56-4fa1d9343fe6"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -356,15 +392,18 @@ Cell[BoxData[
      SuperscriptBox["c", "2"]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.6912627780241127`*^9, 3.691262791825366*^9}, 
    3.6912629527006645`*^9, 3.6912637451540565`*^9, {3.691337892113888*^9, 
-   3.691337901108665*^9}, 3.6913380533229876`*^9, 3.691338557510111*^9}]
+   3.691337901108665*^9}, 3.6913380533229876`*^9, 3.691338557510111*^9, 
+   3.8082772264937162`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"f9dcc7ab-3e83-445c-95a8-3177dfe0cee7"]
 }, Open  ]],
 
-Cell["You can also display this in matrix form.", "Text"],
+Cell["You can also display this in matrix form.", "Text",ExpressionUUID->"bdfdc2d2-2308-4f8b-a980-ac8401b8a983"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"metric", "//", "MatrixForm"}]], "Input"],
+ RowBox[{"metric", "//", "MatrixForm"}]], "Input",
+ CellLabel->"In[6]:=",ExpressionUUID->"45f75f87-ce47-4234-b7c0-86f97e51c9cf"],
 
 Cell[BoxData[
  TagBox[
@@ -392,28 +431,29 @@ Cell[BoxData[
         RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}], "0"},
      {"0", "0", "0", "1"}
     },
-    GridBoxAlignment->{
-     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-      "RowsIndexed" -> {}},
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
     GridBoxSpacings->{"Columns" -> {
         Offset[0.27999999999999997`], {
          Offset[0.7]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.27999999999999997`]}, "Rows" -> {
         Offset[0.2], {
          Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
   Function[BoxForm`e$, 
    MatrixForm[BoxForm`e$]]]], "Output",
  CellChangeTimes->{
   3.6912626775805025`*^9, 3.6912627918409934`*^9, 3.6912629527319145`*^9, 
    3.6912637451860604`*^9, {3.691337892113888*^9, 3.6913379011242943`*^9}, 
-   3.6913380533386145`*^9, 3.6913385575221176`*^9}]
+   3.6913380533386145`*^9, 3.6913385575221176`*^9, 3.808277281463586*^9},
+ CellLabel->
+  "Out[6]//MatrixForm=",ExpressionUUID->"506d4b20-2fe6-4f4a-b3b4-\
+24b8a2a0e43b"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Note:", "Subsubsection"],
+Cell["Note:", "Subsubsection",ExpressionUUID->"a360576e-2fb8-4d8d-967b-398eb48cfe90"],
 
 Cell[TextData[{
  "It is important not to use the symbols, ",
@@ -455,21 +495,22 @@ wrong answer for the present metric because the ",
  StyleBox["m",
   FontWeight->"Bold"],
  " in the metric would be treated as an index, rather than as the mass."
-}], "Text"]
+}], "Text",ExpressionUUID->"05b813de-a3c4-4635-95a0-6c1cde377f90"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Calculating the inverse metric:", "Subsubsection"],
+Cell["Calculating the inverse metric:", "Subsubsection",ExpressionUUID->"464c0505-eeec-4c79-9df5-6bf316460853"],
 
-Cell["The inverse metric is obtained through matrix inversion.", "Text"],
+Cell["The inverse metric is obtained through matrix inversion.", "Text",ExpressionUUID->"89d679b0-161f-46c0-ac36-bf3f1f5e55b2"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"inversemetric", "=", 
   RowBox[{"Simplify", "[", 
-   RowBox[{"Inverse", "[", "metric", "]"}], "]"}]}]], "Input"],
+   RowBox[{"Inverse", "[", "metric", "]"}], "]"}]}]], "Input",
+ CellLabel->"In[7]:=",ExpressionUUID->"7f25b033-7ec3-4042-b468-3bc4f39d568d"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -507,15 +548,16 @@ Cell[BoxData[
  CellChangeTimes->{
   3.69126267765651*^9, 3.691262791872245*^9, 3.6912629527631664`*^9, 
    3.6912637452180634`*^9, {3.691337892129466*^9, 3.6913379011399193`*^9}, 
-   3.6913380533386145`*^9, 3.6913385575521407`*^9}]
+   3.6913380533386145`*^9, 3.6913385575521407`*^9, 3.8082772871168275`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"f337dfbc-defc-43a6-9334-8c336bbe9ddf"]
 }, Open  ]],
 
-Cell["This can also be displayed in matrix form:", "Text"],
-
-Cell[CellGroupData[{
+Cell["This can also be displayed in matrix form:", "Text",ExpressionUUID->"0b1c322f-c2f4-4c0b-bfcf-0071bc860118"],
 
 Cell[BoxData[
- RowBox[{"inversemetric", "//", "MatrixForm"}]], "Input"],
+ RowBox[{"inversemetric", "//", "MatrixForm"}]], "Input",ExpressionUUID->"accd64f3-127f-493c-916d-edb08f538853"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  TagBox[
@@ -556,17 +598,51 @@ Cell[BoxData[
          Offset[0.4]}, 
         Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
   Function[BoxForm`e$, 
-   MatrixForm[BoxForm`e$]]]], "Output",
- CellChangeTimes->{
-  3.6912626776885123`*^9, 3.691262791903496*^9, 3.6912629527787924`*^9, 
-   3.691263745250066*^9, {3.691337892145094*^9, 3.6913379011555424`*^9}, 
-   3.6913380533543177`*^9, 3.691338557560145*^9}]
+   MatrixForm[BoxForm`e$]]]], "Input",
+ CellChangeTimes->{3.8082772934015164`*^9},
+ CellLabel->"In[8]:=",ExpressionUUID->"2812f87d-b43b-4365-a70c-3a9ef16f74c3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SuperscriptBox["kr", "2"]}], 
+      SuperscriptBox[
+       RowBox[{"a", "[", "t", "]"}], "2"]], ",", "0", ",", "0", ",", "0"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", 
+      FractionBox["1", 
+       RowBox[{
+        SuperscriptBox["r", "2"], " ", 
+        SuperscriptBox[
+         RowBox[{"a", "[", "t", "]"}], "2"]}]]}], ",", "0", ",", "0"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", 
+      FractionBox[
+       SuperscriptBox[
+        RowBox[{"Csc", "[", "\[Theta]", "]"}], "2"], 
+       RowBox[{
+        SuperscriptBox["r", "2"], " ", 
+        SuperscriptBox[
+         RowBox[{"a", "[", "t", "]"}], "2"]}]]}], ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8082772934464407`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"690610dd-1be8-4772-afd2-3c7289e95689"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Calculating the Christoffel symbols:", "Subsubsection"],
+Cell["Calculating the Christoffel symbols:", "Subsubsection",ExpressionUUID->"3fffea7c-3ebc-41ca-86b1-f3bf3f5798a3"],
 
 Cell[TextData[{
  "The calculation of the components of the Christoffel symbols is done by \
@@ -589,7 +665,7 @@ transcribing the definition given earlier into the notation of ",
  StyleBox["Simplify",
   FontWeight->"Bold"],
  " for simplifying the result."
-}], "Text"],
+}], "Text",ExpressionUUID->"faaef210-a2a6-4657-a9d3-b5d4cc8d9910"],
 
 Cell[BoxData[
  RowBox[{"affine", ":=", 
@@ -641,12 +717,13 @@ Cell[BoxData[
        RowBox[{"j", ",", "1", ",", "n"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}], " ", 
-    "]"}]}]}]], "Input"]
+    "]"}]}]}]], "Input",
+ CellLabel->"In[9]:=",ExpressionUUID->"5efb11b6-d7e9-451d-a147-40af9a7b38f9"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Displaying the Christoffel symbols:", "Subsubsection"],
+Cell["Displaying the Christoffel symbols:", "Subsubsection",ExpressionUUID->"86719536-f670-4219-96ca-a453ad383046"],
 
 Cell[TextData[{
  "The nonzero Christoffel symbols are displayed below. You need not follow \
@@ -657,10 +734,11 @@ the output the symbol \[CapitalGamma][1,2,3] stands for",
  Cell[BoxData[
   FormBox[
    SubscriptBox[
-    SuperscriptBox["\[CapitalGamma]", "1"], "23"], TraditionalForm]]],
+    SuperscriptBox["\[CapitalGamma]", "1"], "23"], TraditionalForm]],
+  ExpressionUUID->"5eec6396-c9e2-4a05-a8b3-f05f6dde9bd8"],
  ". Because the Christoffel symbols are symmetric under interchange of the \
 last two indices, only the independent components are displayed."
-}], "Text"],
+}], "Text",ExpressionUUID->"5def506b-000a-41c2-9adf-bfa47b0754fc"],
 
 Cell[BoxData[
  RowBox[{"listaffine", ":=", 
@@ -688,7 +766,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"j", ",", "1", ",", "n"}], "}"}], ",", 
     RowBox[{"{", 
-     RowBox[{"k", ",", "1", ",", "j"}], "}"}]}], "]"}]}]], "Input"],
+     RowBox[{"k", ",", "1", ",", "j"}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->"In[10]:=",ExpressionUUID->"e4879e94-2d64-41a1-a556-8a505ca93814"],
 
 Cell[CellGroupData[{
 
@@ -703,7 +782,8 @@ Cell[BoxData[
       "2"}], "]"}], ",", 
    RowBox[{"TableSpacing", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input"],
+     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input",ExpressionUUID->\
+"84865892-2437-477f-a15d-456730625a4a"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -791,13 +871,15 @@ Cell[BoxData[
  CellChangeTimes->{
   3.6912626779085293`*^9, 3.6912627919972525`*^9, 3.6912629528856106`*^9, 
    3.6912637453460717`*^9, {3.6913378922232227`*^9, 3.6913379012024193`*^9}, 
-   3.691338053401119*^9, 3.691338557612179*^9}]
+   3.691338053401119*^9, 
+   3.691338557612179*^9},ExpressionUUID->"77eb8662-9f83-43b4-b927-\
+0c9ba0c27253"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Calculating and displaying the Riemann tensor:", "Subsubsection"],
+Cell["Calculating and displaying the Riemann tensor:", "Subsubsection",ExpressionUUID->"49bff602-883d-416c-abbb-bc0215171cd2"],
 
 Cell[TextData[{
  "The components of the Riemann tensor, ",
@@ -805,9 +887,9 @@ Cell[TextData[{
   FormBox[
    SubscriptBox[
     SuperscriptBox["R", "\[Lambda]"], "\[Mu]\[Nu]\[Sigma]"], 
-   TraditionalForm]]],
+   TraditionalForm]],ExpressionUUID->"2cf68324-13ea-48d2-8892-60b7d2c37655"],
  ", are calculated using the definition given above."
-}], "Text"],
+}], "Text",ExpressionUUID->"65d716e4-8eed-4d2d-a02c-09a6ed4f146f"],
 
 Cell[BoxData[
  RowBox[{"riemann", ":=", 
@@ -860,7 +942,8 @@ Cell[BoxData[
        RowBox[{"k", ",", "1", ",", "n"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"l", ",", "1", ",", "n"}], "}"}]}], "]"}], " ", 
-    "]"}]}]}]], "Input"],
+    "]"}]}]}]], "Input",ExpressionUUID->"09735d6e-8cc2-404b-bed1-\
+8cdb63ce7ce5"],
 
 Cell[TextData[{
  "The nonzero components are displayed by the following functions. In the \
@@ -868,22 +951,24 @@ output, the symbol R[1, 2, 1, 3] stands for ",
  Cell[BoxData[
   FormBox[
    SubscriptBox[
-    SuperscriptBox["R", "1"], "213"], TraditionalForm]]],
+    SuperscriptBox["R", "1"], "213"], TraditionalForm]],ExpressionUUID->
+  "19d94ce5-25ab-4a3e-a1ff-7fd6cd15bb96"],
  ", and similarly for the other components.",
  " You can obtain R[1, 2, 3, 1] from R[1, 2, 1, 3] using the antisymmetry of \
 the Riemann tensor under exchange of the last two indices. The antisymmetry \
 under exchange of the first two indices of ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["R", "\[Lambda]\[Mu]\[Nu]\[Sigma]"], TraditionalForm]]],
+   SubscriptBox["R", "\[Lambda]\[Mu]\[Nu]\[Sigma]"], TraditionalForm]],
+  ExpressionUUID->"feb677f8-f9c2-436f-9bf1-f603749385c2"],
  " is not evident in the output because the components of ",
  Cell[BoxData[
   FormBox[
    SubscriptBox[
     SuperscriptBox["R", "\[Lambda]"], "\[Mu]\[Nu]\[Sigma]"], 
-   TraditionalForm]]],
+   TraditionalForm]],ExpressionUUID->"34fb7483-6f5d-4e5b-ac88-07f29274f50f"],
  " are displayed."
-}], "Text"],
+}], "Text",ExpressionUUID->"2432e37b-8223-4ed9-9d06-57b0618e9549"],
 
 Cell[BoxData[
  RowBox[{"listriemann", ":=", 
@@ -914,7 +999,8 @@ Cell[BoxData[
      RowBox[{"k", ",", "1", ",", "n"}], "}"}], ",", 
     RowBox[{"{", 
      RowBox[{"l", ",", "1", ",", 
-      RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}]}]], "Input"],
+      RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}]}]], "Input",ExpressionUUID->\
+"8bf5f971-be42-43c9-813a-dea9f3cc06df"],
 
 Cell[CellGroupData[{
 
@@ -929,7 +1015,8 @@ Cell[BoxData[
      ",", "2"}], "]"}], ",", 
    RowBox[{"TableSpacing", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input"],
+     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input",ExpressionUUID->\
+"bd63594c-93d3-4f97-970f-e523efa4e319"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1049,22 +1136,25 @@ Cell[BoxData[
  CellChangeTimes->{
   3.6912626804327345`*^9, 3.6912627929800906`*^9, 3.691262953156211*^9, 
    3.691263745514087*^9, {3.6913378923169746`*^9, 3.691337901264922*^9}, 
-   3.6913380534636188`*^9, 3.6913385576912336`*^9}]
+   3.6913380534636188`*^9, 
+   3.6913385576912336`*^9},ExpressionUUID->"b0c072d2-8ffe-46b3-8e91-\
+64188f11742f"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Calculating and displaying the Ricci tensor:", "Subsubsection"],
+Cell["Calculating and displaying the Ricci tensor:", "Subsubsection",ExpressionUUID->"51b9cf19-ba0c-4e19-8c07-cd408ba1d65f"],
 
 Cell[TextData[{
  "The Ricci tensor ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["R", "\[Mu]\[Nu]"], TraditionalForm]]],
+   SubscriptBox["R", "\[Mu]\[Nu]"], TraditionalForm]],ExpressionUUID->
+  "ddd6e8b4-b897-45db-a47a-18c9a0433105"],
  " was defined by summing the first and third indices of the Riemann tensor \
 (which has the first index already raised)."
-}], "Text"],
+}], "Text",ExpressionUUID->"020c1dca-6d07-45ce-9a64-16032535ea1e"],
 
 Cell[BoxData[
  RowBox[{"ricci", ":=", 
@@ -1083,15 +1173,17 @@ Cell[BoxData[
        RowBox[{"j", ",", "1", ",", "n"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"l", ",", "1", ",", "n"}], "}"}]}], "]"}], " ", 
-    "]"}]}]}]], "Input"],
+    "]"}]}]}]], "Input",ExpressionUUID->"472bec6f-28b2-4605-8b3a-\
+b128aa9af5c8"],
 
 Cell[TextData[{
  "Next we display the nonzero components. In the output, R[1, 2] denotes ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["R", "12"], TraditionalForm]]],
+   SubscriptBox["R", "12"], TraditionalForm]],ExpressionUUID->
+  "4985df57-66d3-42fe-b795-e544a6406ecb"],
  ", and similarly for the other components."
-}], "Text"],
+}], "Text",ExpressionUUID->"5dc705c6-a35b-4e83-a8a1-bcf613adcb70"],
 
 Cell[BoxData[
  RowBox[{"listricci", ":=", 
@@ -1115,7 +1207,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"j", ",", "1", ",", "n"}], "}"}], ",", 
     RowBox[{"{", 
-     RowBox[{"l", ",", "1", ",", "j"}], "}"}]}], "]"}]}]], "Input"],
+     RowBox[{"l", ",", "1", ",", "j"}], "}"}]}], "]"}]}]], "Input",ExpressionU\
+UID->"da17ea74-c4d5-4018-82e6-ae55bb2e5fc1"],
 
 Cell[CellGroupData[{
 
@@ -1130,7 +1223,8 @@ Cell[BoxData[
      "2"}], "]"}], ",", 
    RowBox[{"TableSpacing", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input"],
+     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input",ExpressionUUID->\
+"dee13c5d-b95a-4d50-ab8a-8520d4bd5da5"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1207,18 +1301,20 @@ Cell[BoxData[
  CellChangeTimes->{
   3.6912626810727854`*^9, 3.6912627931988535`*^9, 3.6912629532499676`*^9, 
    3.691263745610093*^9, {3.691337892363852*^9, 3.6913379013118*^9}, 
-   3.691338053494871*^9, 3.6913385577692857`*^9}]
+   3.691338053494871*^9, 
+   3.6913385577692857`*^9},ExpressionUUID->"7ccdfdc2-e148-44c2-9c62-\
+8424c3afd037"]
 }, Open  ]],
 
 Cell["\<\
 A vanishing table (as with the Schwarzschild metric example)  means that the \
 vacuum Einstein equation is satisfied.\
-\>", "Text"]
+\>", "Text",ExpressionUUID->"ff94fe23-81df-42d8-9ef8-9ac8cab25493"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Calculating the scalar curvature:", "Subsubsection"],
+Cell["Calculating the scalar curvature:", "Subsubsection",ExpressionUUID->"e880a99b-6e76-4de9-89de-4fcd5acf6085"],
 
 Cell[TextData[{
  "The scalar curvature ",
@@ -1226,7 +1322,7 @@ Cell[TextData[{
   FontSlant->"Italic"],
  " is calculated using the inverse metric and the Ricci tensor. The result is \
 displayed in the output line."
-}], "Text"],
+}], "Text",ExpressionUUID->"74ec0c34-1fe9-4161-9d74-50abde503086"],
 
 Cell[CellGroupData[{
 
@@ -1246,7 +1342,7 @@ Cell[BoxData[
       RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], "]"}], " ", 
-   "]"}]}]], "Input"],
+   "]"}]}]], "Input",ExpressionUUID->"81e088d1-fd1f-4482-b32d-d221c5fcb448"],
 
 Cell[BoxData[
  RowBox[{"-", 
@@ -1274,13 +1370,15 @@ Cell[BoxData[
  CellChangeTimes->{
   3.691262681248797*^9, 3.6912627932926083`*^9, 3.6912629533124714`*^9, 
    3.6912637456740975`*^9, {3.6913378923951054`*^9, 3.6913379013274283`*^9}, 
-   3.691338053510496*^9, 3.691338557794325*^9}]
+   3.691338053510496*^9, 
+   3.691338557794325*^9},ExpressionUUID->"41cc8025-8517-4d37-9ee1-\
+1485db4d2f02"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Calculating the Einstein tensor:", "Subsubsection"],
+Cell["Calculating the Einstein tensor:", "Subsubsection",ExpressionUUID->"84754e88-c919-4eda-9167-cae328218fca"],
 
 Cell[TextData[{
  "The Einstein tensor,  ",
@@ -1292,9 +1390,10 @@ Cell[TextData[{
      SubscriptBox["R", "\[Mu]\[Nu]"], "-", 
      RowBox[{
       FractionBox["1", "2"], 
-      SubscriptBox["g", "\[Mu]\[Nu]"], "R"}]}]}], TraditionalForm]]],
+      SubscriptBox["g", "\[Mu]\[Nu]"], "R"}]}]}], TraditionalForm]],
+  ExpressionUUID->"a690ac12-9510-4a0d-98a8-9e8e188e171b"],
  ", is found from the tensors already calculated."
-}], "Text"],
+}], "Text",ExpressionUUID->"f6883d73-aab1-44d0-a8dc-65552992c0a3"],
 
 Cell[BoxData[
  RowBox[{"einstein", ":=", 
@@ -1307,11 +1406,12 @@ Cell[BoxData[
     "]"}]}]}]], "Input",
  CellChangeTimes->{{3.6913380372825794`*^9, 3.691338048643777*^9}, {
   3.69133807928836*^9, 3.6913380798664956`*^9}, {3.6913385533042717`*^9, 
-  3.6913385534763885`*^9}}],
+  3.6913385534763885`*^9}},ExpressionUUID->"6e17aa69-849b-40f4-9d63-\
+0c3f810b0deb"],
 
 Cell["\<\
 The results are displayed in the same way as for the Ricci tensor earlier.\
-\>", "Text"],
+\>", "Text",ExpressionUUID->"6632d870-c51c-4dd6-9c55-ffd0e0b9b189"],
 
 Cell[BoxData[
  RowBox[{"listeinstein", ":=", 
@@ -1335,7 +1435,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"j", ",", "1", ",", "n"}], "}"}], ",", 
     RowBox[{"{", 
-     RowBox[{"l", ",", "1", ",", "j"}], "}"}]}], "]"}]}]], "Input"],
+     RowBox[{"l", ",", "1", ",", "j"}], "}"}]}], "]"}]}]], "Input",ExpressionU\
+UID->"a8cc3693-ebe4-475a-a671-dfc4ac8c9c0e"],
 
 Cell[CellGroupData[{
 
@@ -1350,7 +1451,8 @@ Cell[BoxData[
      ",", "2"}], "]"}], ",", 
    RowBox[{"TableSpacing", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input"],
+     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input",ExpressionUUID->\
+"bd45ce75-19ec-404e-bfac-18561366eb03"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1438,27 +1540,33 @@ Cell[BoxData[
  CellChangeTimes->{
   3.6912626818328433`*^9, 3.6912627936363792`*^9, 3.691262953546859*^9, 
    3.6912637457901087`*^9, {3.6913378924419804`*^9, 3.691337901374304*^9}, 
-   3.691338053572999*^9, 3.6913385578263245`*^9}]
+   3.691338053572999*^9, 
+   3.6913385578263245`*^9},ExpressionUUID->"e79d5603-622d-4aa6-b0ee-\
+b11d061f1542"]
 }, Open  ]],
 
 Cell["\<\
 A vanishing table means that the vacuum Einstein equation is satisfied!\
-\>", "Text"]
+\>", "Text",ExpressionUUID->"ba710854-5d6a-4cec-9df1-b2705a994ea7"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["", "Subsubsection",
- CellChangeTimes->{3.6913382189213214`*^9}],
+ CellChangeTimes->{
+  3.6913382189213214`*^9},ExpressionUUID->"3b6a04d5-30e5-4cde-941d-\
+64420ebd0ca5"],
 
 Cell[TextData[StyleBox["",
  FontVariations->{"CompatibilityType"->0}]], "Text",
- CellChangeTimes->{3.6913382202818413`*^9}]
+ CellChangeTimes->{
+  3.6913382202818413`*^9},ExpressionUUID->"9aa7db78-d94f-4fd5-a9cf-\
+0e230052bf40"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowToolbars->"EditBar",
-WindowSize->{1368, 685},
+WindowSize->{1536, 781},
 WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 PrintingPageRange->{Automatic, Automatic},
 PrintingOptions->{"Magnification"->1,
@@ -1469,7 +1577,7 @@ PrintingOptions->{"Magnification"->1,
   "ISO8859-1"]},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
 Magnification->1.5,
-FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -1484,134 +1592,134 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 55, 0, 84, "Subtitle"],
-Cell[638, 24, 529, 15, 79, "Text"],
-Cell[1170, 41, 674, 21, 56, "Text"],
-Cell[1847, 64, 376, 14, 45, "Text"],
-Cell[2226, 80, 945, 29, 50, "Text"],
-Cell[3174, 111, 32, 0, 45, "Text"],
-Cell[3209, 113, 220, 9, 50, "Text"],
-Cell[3432, 124, 37, 0, 45, "Text"],
-Cell[3472, 126, 196, 8, 48, "Text"],
-Cell[3671, 136, 40, 0, 45, "Text"],
-Cell[3714, 138, 290, 12, 56, "Text"],
-Cell[4007, 152, 619, 15, 105, "Text"],
+Cell[580, 22, 110, 0, 78, "Subtitle",ExpressionUUID->"24a0c237-482d-47e9-93c4-b53a44aa94ce"],
+Cell[693, 24, 738, 21, 54, "Text",ExpressionUUID->"7d415b5f-6396-44ae-81a8-c44d02be53ae"],
+Cell[1434, 47, 787, 22, 59, "Text",ExpressionUUID->"f64bbdfd-f97b-4d2f-9f29-2148c48d6935"],
+Cell[2224, 71, 620, 19, 52, "Text",ExpressionUUID->"3804a6b7-863d-4991-acaf-8e965e8be8a2"],
+Cell[2847, 92, 1058, 30, 54, "Text",ExpressionUUID->"cea14446-3463-4aca-820e-0f35adad1f2b"],
+Cell[3908, 124, 135, 3, 52, "Text",ExpressionUUID->"181e598c-3c59-4bd9-8052-63b951cf200b"],
+Cell[4046, 129, 330, 9, 54, "Text",ExpressionUUID->"a4f0ee7e-5100-4870-a7ef-e2e8a0b54009"],
+Cell[4379, 140, 167, 3, 52, "Text",ExpressionUUID->"ac73f4ef-ccbb-4fdc-9461-64ebb60cb869"],
+Cell[4549, 145, 309, 9, 54, "Text",ExpressionUUID->"39a85e12-26ad-41c9-971e-066c0aeeb8c9"],
+Cell[4861, 156, 95, 0, 52, "Text",ExpressionUUID->"b88a402b-f9e8-45ec-bb38-dc427800b7e6"],
+Cell[4959, 158, 403, 13, 59, "Text",ExpressionUUID->"1337dd83-9d1d-4f5b-b5ba-3a8c5c0ad83e"],
+Cell[5365, 173, 732, 16, 121, "Text",ExpressionUUID->"72670f58-cc4a-4d63-838b-7f07209f6483"],
 Cell[CellGroupData[{
-Cell[4651, 171, 56, 0, 58, "Subsubsection"],
-Cell[4710, 173, 205, 4, 74, "Text"],
-Cell[4918, 179, 285, 6, 75, "Input"]
+Cell[6122, 193, 111, 0, 67, "Subsubsection",ExpressionUUID->"8c2dc73e-d277-4a5f-a2b8-23445dbbb418"],
+Cell[6236, 195, 260, 4, 86, "Text",ExpressionUUID->"dc8c94b8-1b9e-47ad-bdea-4df09f5b54b1"],
+Cell[6499, 201, 363, 7, 43, "Input",ExpressionUUID->"64d7de31-598a-4ce1-bb73-553fecc3afd3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5240, 190, 47, 0, 58, "Subsubsection"],
-Cell[5290, 192, 183, 6, 45, "Text"],
+Cell[6899, 213, 102, 0, 67, "Subsubsection",ExpressionUUID->"1cfdb4fa-0ebb-474a-bba4-9442c39e6ec0"],
+Cell[7004, 215, 238, 6, 52, "Text",ExpressionUUID->"3249a85a-f6b4-46c5-8bf4-b03c452d1492"],
 Cell[CellGroupData[{
-Cell[5498, 202, 49, 1, 45, "Input"],
-Cell[5550, 205, 245, 4, 44, "Output"]
+Cell[7267, 225, 127, 2, 43, "Input",ExpressionUUID->"728604a6-26bd-4b7b-8264-b1a71103a453"],
+Cell[7397, 229, 345, 5, 49, "Output",ExpressionUUID->"1d405a38-68f1-4b6f-b81a-c24544530106"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5844, 215, 56, 0, 58, "Subsubsection"],
-Cell[5903, 217, 174, 3, 74, "Text"],
+Cell[7791, 240, 111, 0, 67, "Subsubsection",ExpressionUUID->"1b115f16-7720-4b86-9e54-1e3db19e832e"],
+Cell[7905, 242, 290, 7, 86, "Text",ExpressionUUID->"37e4cece-0041-4d91-8c08-96cd9f0e130a"],
 Cell[CellGroupData[{
-Cell[6102, 224, 179, 5, 45, "Input"],
-Cell[6284, 231, 324, 6, 44, "Output"]
+Cell[8220, 253, 257, 6, 43, "Input",ExpressionUUID->"c9d50082-97f4-481f-9c86-880680c07c28"],
+Cell[8480, 261, 426, 7, 49, "Output",ExpressionUUID->"f8142e4c-e0de-4c0d-a7e2-38168fc1ac1f"]
 }, Open  ]],
-Cell[6623, 240, 823, 27, 104, "Text"]
+Cell[8921, 271, 994, 29, 119, "Text",ExpressionUUID->"fffe87bc-481e-46a0-8951-70655ebf57af"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7483, 272, 45, 0, 58, "Subsubsection"],
-Cell[7531, 274, 267, 5, 74, "Text"],
+Cell[9952, 305, 100, 0, 67, "Subsubsection",ExpressionUUID->"882cce5f-074b-4650-836c-548168237361"],
+Cell[10055, 307, 327, 7, 86, "Text",ExpressionUUID->"ff675e26-7b87-4210-b40c-527ef5177d35"],
 Cell[CellGroupData[{
-Cell[7823, 283, 1322, 39, 128, "Input"],
-Cell[9148, 324, 1144, 34, 71, "Output"]
+Cell[10407, 318, 1400, 40, 104, "Input",ExpressionUUID->"5862d49b-9cba-4871-be56-4fa1d9343fe6"],
+Cell[11810, 360, 1250, 36, 75, "Output",ExpressionUUID->"f9dcc7ab-3e83-445c-95a8-3177dfe0cee7"]
 }, Open  ]],
-Cell[10307, 361, 57, 0, 45, "Text"],
+Cell[13075, 399, 112, 0, 52, "Text",ExpressionUUID->"bdfdc2d2-2308-4f8b-a980-ac8401b8a983"],
 Cell[CellGroupData[{
-Cell[10389, 365, 64, 1, 45, "Input"],
-Cell[10456, 368, 1424, 41, 160, "Output"]
+Cell[13212, 403, 142, 2, 43, "Input",ExpressionUUID->"45f75f87-ce47-4234-b7c0-86f97e51c9cf"],
+Cell[13357, 407, 1438, 42, 167, "Output",ExpressionUUID->"506d4b20-2fe6-4f4a-b3b4-24b8a2a0e43b"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11929, 415, 30, 0, 58, "Subsubsection"],
-Cell[11962, 417, 1199, 40, 131, "Text"]
+Cell[14844, 455, 85, 0, 67, "Subsubsection",ExpressionUUID->"a360576e-2fb8-4d8d-967b-398eb48cfe90"],
+Cell[14932, 457, 1254, 40, 153, "Text",ExpressionUUID->"05b813de-a3c4-4635-95a0-6c1cde377f90"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13198, 462, 56, 0, 58, "Subsubsection"],
-Cell[13257, 464, 72, 0, 45, "Text"],
+Cell[16223, 502, 111, 0, 67, "Subsubsection",ExpressionUUID->"464c0505-eeec-4c79-9df5-6bf316460853"],
+Cell[16337, 504, 127, 0, 52, "Text",ExpressionUUID->"89d679b0-161f-46c0-ac36-bf3f1f5e55b2"],
 Cell[CellGroupData[{
-Cell[13354, 468, 136, 3, 45, "Input"],
-Cell[13493, 473, 1171, 36, 75, "Output"]
+Cell[16489, 508, 214, 4, 43, "Input",ExpressionUUID->"7f25b033-7ec3-4042-b468-3bc4f39d568d"],
+Cell[16706, 514, 1273, 37, 79, "Output",ExpressionUUID->"f337dfbc-defc-43a6-9334-8c336bbe9ddf"]
 }, Open  ]],
-Cell[14679, 512, 58, 0, 45, "Text"],
+Cell[17994, 554, 113, 0, 52, "Text",ExpressionUUID->"0b1c322f-c2f4-4c0b-bfcf-0071bc860118"],
+Cell[18110, 556, 126, 1, 43, "Input",ExpressionUUID->"accd64f3-127f-493c-916d-edb08f538853"],
 Cell[CellGroupData[{
-Cell[14762, 516, 71, 1, 45, "Input"],
-Cell[14836, 519, 1471, 43, 190, "Output"]
+Cell[18261, 561, 1375, 41, 185, InheritFromParent,ExpressionUUID->"2812f87d-b43b-4365-a70c-3a9ef16f74c3"],
+Cell[19639, 604, 1075, 34, 79, "Output",ExpressionUUID->"690610dd-1be8-4772-afd2-3c7289e95689"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16356, 568, 61, 0, 58, "Subsubsection"],
-Cell[16420, 570, 623, 21, 102, "Text"],
-Cell[17046, 593, 1798, 50, 133, "Input"]
+Cell[20763, 644, 116, 0, 67, "Subsubsection",ExpressionUUID->"3fffea7c-3ebc-41ca-86b1-f3bf3f5798a3"],
+Cell[20882, 646, 678, 21, 119, "Text",ExpressionUUID->"faaef210-a2a6-4657-a9d3-b5d4cc8d9910"],
+Cell[21563, 669, 1876, 51, 131, "Input",ExpressionUUID->"5efb11b6-d7e9-451d-a147-40af9a7b38f9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18881, 648, 60, 0, 58, "Subsubsection"],
-Cell[18944, 650, 536, 12, 104, "Text"],
-Cell[19483, 664, 864, 26, 75, "Input"],
+Cell[23476, 725, 115, 0, 67, "Subsubsection",ExpressionUUID->"86719536-f670-4219-96ca-a453ad383046"],
+Cell[23594, 727, 649, 13, 119, "Text",ExpressionUUID->"5def506b-000a-41c2-9adf-bfa47b0754fc"],
+Cell[24246, 742, 943, 27, 106, "Input",ExpressionUUID->"e4879e94-2d64-41a1-a556-8a505ca93814"],
 Cell[CellGroupData[{
-Cell[20372, 694, 364, 11, 45, "Input"],
-Cell[20739, 707, 3056, 86, 536, "Output"]
+Cell[25214, 773, 421, 12, 43, "Input",ExpressionUUID->"84865892-2437-477f-a15d-456730625a4a"],
+Cell[25638, 787, 3117, 88, 531, "Output",ExpressionUUID->"77eb8662-9f83-43b4-b927-0c9ba0c27253"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23844, 799, 71, 0, 58, "Subsubsection"],
-Cell[23918, 801, 252, 8, 50, "Text"],
-Cell[24173, 811, 1838, 51, 162, "Input"],
-Cell[26014, 864, 807, 21, 141, "Text"],
-Cell[26824, 887, 986, 29, 104, "Input"],
+Cell[28804, 881, 126, 0, 58, "Subsubsection",ExpressionUUID->"49bff602-883d-416c-abbb-bc0215171cd2"],
+Cell[28933, 883, 362, 8, 50, "Text",ExpressionUUID->"65d716e4-8eed-4d2d-a02c-09a6ed4f146f"],
+Cell[29298, 893, 1895, 52, 162, "Input",ExpressionUUID->"09735d6e-8cc2-404b-bed1-8cdb63ce7ce5"],
+Cell[31196, 947, 1033, 23, 141, "Text",ExpressionUUID->"2432e37b-8223-4ed9-9d06-57b0618e9549"],
+Cell[32232, 972, 1043, 30, 104, "Input",ExpressionUUID->"8bf5f971-be42-43c9-813a-dea9f3cc06df"],
 Cell[CellGroupData[{
-Cell[27835, 920, 365, 11, 45, "Input"],
-Cell[28203, 933, 3980, 118, 550, "Output"]
+Cell[33300, 1006, 422, 12, 45, "Input",ExpressionUUID->"bd63594c-93d3-4f97-970f-e523efa4e319"],
+Cell[33725, 1020, 4041, 120, 550, "Output",ExpressionUUID->"b0c072d2-8ffe-46b3-8e91-64188f11742f"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32232, 1057, 69, 0, 58, "Subsubsection"],
-Cell[32304, 1059, 254, 7, 77, "Text"],
-Cell[32561, 1068, 579, 17, 45, "Input"],
-Cell[33143, 1087, 222, 6, 45, "Text"],
-Cell[33368, 1095, 734, 22, 75, "Input"],
+Cell[37815, 1146, 124, 0, 58, "Subsubsection",ExpressionUUID->"51b9cf19-ba0c-4e19-8c07-cd408ba1d65f"],
+Cell[37942, 1148, 367, 8, 77, "Text",ExpressionUUID->"020c1dca-6d07-45ce-9a64-16032535ea1e"],
+Cell[38312, 1158, 636, 18, 45, "Input",ExpressionUUID->"472bec6f-28b2-4605-8b3a-b128aa9af5c8"],
+Cell[38951, 1178, 335, 7, 45, "Text",ExpressionUUID->"5dc705c6-a35b-4e83-a8a1-bcf613adcb70"],
+Cell[39289, 1187, 791, 23, 75, "Input",ExpressionUUID->"da17ea74-c4d5-4018-82e6-ae55bb2e5fc1"],
 Cell[CellGroupData[{
-Cell[34127, 1121, 363, 11, 45, "Input"],
-Cell[34493, 1134, 2627, 75, 205, "Output"]
+Cell[40105, 1214, 420, 12, 45, "Input",ExpressionUUID->"dee13c5d-b95a-4d50-ab8a-8520d4bd5da5"],
+Cell[40528, 1228, 2688, 77, 205, "Output",ExpressionUUID->"7ccdfdc2-e148-44c2-9c62-8424c3afd037"]
 }, Open  ]],
-Cell[37135, 1212, 141, 3, 45, "Text"]
+Cell[43231, 1308, 196, 3, 45, "Text",ExpressionUUID->"ff94fe23-81df-42d8-9ef8-9ac8cab25493"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37313, 1220, 58, 0, 58, "Subsubsection"],
-Cell[37374, 1222, 203, 6, 45, "Text"],
+Cell[43464, 1316, 113, 0, 58, "Subsubsection",ExpressionUUID->"e880a99b-6e76-4de9-89de-4fcd5acf6085"],
+Cell[43580, 1318, 258, 6, 45, "Text",ExpressionUUID->"74ec0c34-1fe9-4161-9d74-50abde503086"],
 Cell[CellGroupData[{
-Cell[37602, 1232, 505, 16, 45, "Input"],
-Cell[38110, 1250, 929, 26, 77, "Output"]
+Cell[43863, 1328, 560, 16, 45, "Input",ExpressionUUID->"81e088d1-fd1f-4482-b32d-d221c5fcb448"],
+Cell[44426, 1346, 990, 28, 77, "Output",ExpressionUUID->"41cc8025-8517-4d37-9ee1-1485db4d2f02"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[39088, 1282, 57, 0, 58, "Subsubsection"],
-Cell[39148, 1284, 357, 12, 56, "Text"],
-Cell[39508, 1298, 424, 11, 45, "Input"],
-Cell[39935, 1311, 98, 2, 45, "Text"],
-Cell[40036, 1315, 743, 22, 75, "Input"],
+Cell[45465, 1380, 112, 0, 58, "Subsubsection",ExpressionUUID->"84754e88-c919-4eda-9167-cae328218fca"],
+Cell[45580, 1382, 470, 13, 56, "Text",ExpressionUUID->"f6883d73-aab1-44d0-a8dc-65552992c0a3"],
+Cell[46053, 1397, 481, 12, 45, "Input",ExpressionUUID->"6e17aa69-849b-40f4-9d63-0c3f810b0deb"],
+Cell[46537, 1411, 153, 2, 45, "Text",ExpressionUUID->"6632d870-c51c-4dd6-9c55-ffd0e0b9b189"],
+Cell[46693, 1415, 800, 23, 75, "Input",ExpressionUUID->"a8cc3693-ebe4-475a-a671-dfc4ac8c9c0e"],
 Cell[CellGroupData[{
-Cell[40804, 1341, 366, 11, 45, "Input"],
-Cell[41173, 1354, 2951, 86, 218, "Output"]
+Cell[47518, 1442, 423, 12, 45, "Input",ExpressionUUID->"bd45ce75-19ec-404e-bfac-18561366eb03"],
+Cell[47944, 1456, 3012, 88, 218, "Output",ExpressionUUID->"e79d5603-622d-4aa6-b0ee-b11d061f1542"]
 }, Open  ]],
-Cell[44139, 1443, 95, 2, 45, "Text"]
+Cell[50971, 1547, 150, 2, 45, "Text",ExpressionUUID->"ba710854-5d6a-4cec-9df1-b2705a994ea7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44271, 1450, 69, 1, 58, "Subsubsection"],
-Cell[44343, 1453, 123, 2, 45, "Text"]
+Cell[51158, 1554, 129, 3, 58, "Subsubsection",ExpressionUUID->"3b6a04d5-30e5-4cde-941d-64420ebd0ca5"],
+Cell[51290, 1559, 183, 4, 45, "Text",ExpressionUUID->"9aa7db78-d94f-4fd5-a9cf-0e230052bf40"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)
