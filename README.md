@@ -8,9 +8,13 @@ it has already example with FRW metric you can run it.
 
 2-  [phase portait plotter](https://github.com/MohamedElashri/Physics/blob/master/phase%20portait.m)
 
-given potnetial function, this package plot the potntial and phase portait. 
+Given a potnetial function, this package plot the potntial and phase portait. 
 
 3-  [1-D Ising Model](https://github.com/MohamedElashri/Physics/blob/master/Ising%20model.ipynb)
 
 Jupyter Notebook for 1-D Ising Model simulation
 
+
+4 - [IBM Quantum Computer Exercuse](https://github.com/MohamedElashri/Physics/blob/master/IBM%20Quantum%20Computer%20exercise.ipynb)
+
+Using IBM open source SDK for using their IBM Q QC. available online for free at https://quantum-computing.ibm.com/
