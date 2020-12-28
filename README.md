@@ -17,4 +17,4 @@ Jupyter Notebook for 1-D Ising Model simulation
 
 4 - [IBM Quantum Computer Exercise](https://github.com/MohamedElashri/Physics/blob/master/IBM%20Quantum%20Computer%20exercise.ipynb)
 
-Using IBM open source SDK for using their IBM Q QC. available online for free at [IBM Computing Center])(https://quantum-computing.ibm.com/)
+Using IBM open source SDK for using their IBM Q QC. available online for free at [IBM Computing Center](https://quantum-computing.ibm.com/)
