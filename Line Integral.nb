@@ -1,0 +1,813 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28667,        805]
+NotebookOptionsPosition[     26040,        755]
+NotebookOutlinePosition[     26521,        774]
+CellTagsIndexPosition[     26478,        771]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Problem 3", "Subtitle",
+ CellChangeTimes->{{3.820586587013344*^9, 
+  3.8205865904844418`*^9}},ExpressionUUID->"e8accbbc-e5f9-4145-bec2-\
+250c9ac8947e"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.820586582627303*^9},ExpressionUUID->"8d38da49-4190-47a3-9264-\
+341e45d17c3e"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Compute the Line Integral along a Path through a Vector Field   ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "C", "\[Placeholder]"], 
+    RowBox[{"V", ".", 
+     RowBox[{"\[DifferentialD]", "r"}]}]}], TraditionalForm]],ExpressionUUID->
+  "df9f6c8c-6ef1-432a-b53b-136bf8f81f1e"],
+ ")"
+}], "Section",
+ CellChangeTimes->{{3.820586610237729*^9, 3.820586631556142*^9}, 
+   3.820586663302589*^9},ExpressionUUID->"1eca0b80-d37c-4f65-a5b2-\
+51220af8c16b"],
+
+Cell[TextData[{
+ "The code below is designed to computer a line integral along a path, \
+defined by r(t)=<x(t),y(t)>, through a vector field, accumulating the dot \
+products of the tangent vectors with the field vectors along the path:  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "C", "\[Placeholder]"], 
+    RowBox[{"V", ".", 
+     RowBox[{"\[DifferentialD]", "r"}]}]}], TraditionalForm]],ExpressionUUID->
+  "c3c72267-feb6-4e55-98b6-62e6328df59c"],
+ ".  When the vector field represents a force field, \nClear any previous \
+symbol definitions to avoid conflicts.\nDefine the x, y components of the \
+path.\nDefine the path, r(t), using the just defined components.\nDefine the \
+vector field, V(x,y), in terms of the underlying parameter t.\nPut the pieces \
+together into an integral and evaluates it."
+}], "Text",
+ CellChangeTimes->{{3.8205866399428787`*^9, 3.820586683778153*^9}, {
+  3.820587304935852*^9, 3.820587314967025*^9}, {3.820587369093433*^9, 
+  3.8205873974538097`*^9}},ExpressionUUID->"bbb78aea-5f65-4760-9935-\
+3db79996e329"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs\:f040", "\"\<VectorAnalysis`\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{"V", ",", "T", ",", "r", ",", "x", ",", "y"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Vector Field\>\"", ";", 
+  RowBox[{
+   RowBox[{"V", "[", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"{", 
+      RowBox[{"y", ",", "x"}], "}"}], 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Curve\>\"", ";", 
+  RowBox[{
+   RowBox[{"r", "[", "t_", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2"}], " ", "+", 
+      RowBox[{"2", "  ", 
+       RowBox[{"Cos", "[", "t", "]"}]}]}], ",", 
+     RowBox[{"3", "+", 
+      RowBox[{"2", "  ", 
+       RowBox[{"Sin", "[", "t", "]"}]}]}]}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"Tn", "[", "t_", "]"}], ":=", 
+   RowBox[{"Normalize", "[", 
+    RowBox[{
+     SuperscriptBox["r", "\[Prime]",
+      MultilineFunction->None], "[", "t", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Curve Range\>\"", ";", 
+  RowBox[{"a", "=", "0"}], ";", 
+  RowBox[{"b", "=", 
+   RowBox[{"2", "\[Pi]"}]}], ";", "\"\<Curve Grid\>\"", ";", 
+  RowBox[{"n", "=", "50"}], ";", 
+  RowBox[{"s", "=", 
+   FractionBox[
+    RowBox[{"b", "-", "a"}], "n"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Integrand", "=", 
+   RowBox[{"Simplify", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"V", "[", 
+       RowBox[{"r", "[", "t", "]"}], "]"}], ".", 
+      RowBox[{
+       SuperscriptBox["r", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}]}], ",", 
+     RowBox[{"Assumptions", "\[Rule]", 
+      RowBox[{"a", "\[LessEqual]", "t", "\[LessEqual]", "b"}]}]}], "]"}]}], 
+  ";", 
+  RowBox[{"LI", "=", 
+   RowBox[{"Round", "[", 
+    RowBox[{
+     RowBox[{"NIntegrate", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"V", "[", 
+         RowBox[{"r", "[", "t", "]"}], "]"}], ".", 
+        RowBox[{
+         SuperscriptBox["r", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "a", ",", "b"}], "}"}], ",", 
+       RowBox[{"AccuracyGoal", "\[Rule]", "5"}]}], "]"}], ",", "5"}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "    ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{
+     "\"\<\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, 1]]\)=\>\"", ",", 
+      "Bold", ",", "16"}], "]"}], " ", ",", "   ", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"V", "[", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], "]"}], ",", "Bold", ",", "16"}], 
+     "]"}], ",", " ", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+     "\"\<   V\[CenterDot]\!\(\*StyleBox[\"T\",FontColor->RGBColor[0, 1, \
+0]]\)ds=V\[CenterDot]dr=\>\"", ",", "Bold", ",", "16"}], "]"}], " ", ",", 
+    "  ", 
+    RowBox[{"Style", "[", 
+     RowBox[{"Integrand", ",", "Bold", ",", "16"}], "]"}]}], "  ", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+    "\"\<Line Integral: \!\(\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(2  \
+\[Pi]\)]\)\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, 1]]\)\[CenterDot]dr=\
+\!\(\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(2  \
+\[Pi]\)]\)\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, \
+1]]\)\[CenterDot]\!\(\*StyleBox[\"T\",FontColor->RGBColor[0, 1, \
+0]]\)ds=\!\(\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(2  \
+\[Pi]\)]\)\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, \
+1]]\)\[CenterDot]\!\(\*StyleBox[\"r\",FontColor->RGBColor[0, 1, \
+0]]\)\!\(\*StyleBox[\"'\",FontColor->RGBColor[0, 1, 0]]\)dt=0\>\"", ",", 
+     "Bold", ",", "16"}], "]"}], "]"}], " "}]}], "Input",
+ CellChangeTimes->{{3.8205867034432573`*^9, 3.820586885304966*^9}, 
+   3.820586960412599*^9, {3.8205870940318604`*^9, 3.820587291828858*^9}, {
+   3.820589374627221*^9, 3.820589446393779*^9}, {3.820589497100112*^9, 
+   3.820589500154538*^9}, {3.8206014797633467`*^9, 
+   3.8206014859634933`*^9}},ExpressionUUID->"7bdd1981-e66b-4736-9fce-\
+a6dcd68e046f"],
+
+Cell[BoxData[
+ RowBox[{"\<\"VectorAnalysis`\"\>", " ", "Needs\:f040"}]], "Output",
+ CellChangeTimes->{3.820589501010861*^9},
+ CellLabel->
+  "Out[339]=",ExpressionUUID->"202cc353-a20c-4bbf-a8fb-d6c3d6510503"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox["\<\"\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, 0, \
+1]]\\)=\"\>",
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold], "\[InvisibleSpace]", 
+   StyleBox[
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["y", 
+        RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}]]}], ",", 
+      RowBox[{"-", 
+       FractionBox["x", 
+        RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}]]}]}], "}"}],
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold], "\[InvisibleSpace]", 
+   StyleBox["\<\"   \
+V\[CenterDot]\\!\\(\\*StyleBox[\\\"T\\\",FontColor->RGBColor[0, 1, 0]]\\)ds=V\
+\[CenterDot]dr=\"\>",
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold], "\[InvisibleSpace]", 
+   StyleBox[
+    FractionBox[
+     RowBox[{
+      RowBox[{"4", " ", 
+       RowBox[{"Cos", "[", "t", "]"}]}], "-", 
+      RowBox[{"4", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"2", " ", "t"}], "]"}]}], "+", 
+      RowBox[{"6", " ", 
+       RowBox[{"Sin", "[", "t", "]"}]}]}], 
+     RowBox[{"17", "-", 
+      RowBox[{"8", " ", 
+       RowBox[{"Cos", "[", "t", "]"}]}], "+", 
+      RowBox[{"12", " ", 
+       RowBox[{"Sin", "[", "t", "]"}]}]}]],
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold]}],
+  SequenceForm[
+   Style["\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, 1]]\)=", Bold, 16], 
+   Style[{-$CellContext`y/($CellContext`x^2 + $CellContext`y^2), \
+-$CellContext`x/($CellContext`x^2 + $CellContext`y^2)}, Bold, 16], 
+   Style["   V\[CenterDot]\!\(\*StyleBox[\"T\",FontColor->RGBColor[0, 1, \
+0]]\)ds=V\[CenterDot]dr=", Bold, 16], 
+   Style[(4 Cos[$CellContext`t] - 4 Cos[2 $CellContext`t] + 
+     6 Sin[$CellContext`t])/(17 - 8 Cos[$CellContext`t] + 
+    12 Sin[$CellContext`t]), Bold, 16]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8205872925612907`*^9, 3.820589375832654*^9, {3.820589433540721*^9, 
+   3.8205894484977427`*^9}, 3.8205895010305367`*^9},
+ CellLabel->
+  "During evaluation of \
+In[339]:=",ExpressionUUID->"2196d6b1-7aed-4d0a-9a18-09ca052fb8b6"],
+
+Cell[BoxData[
+ StyleBox["\<\"Line Integral: \\!\\(\\*SubsuperscriptBox[\\(\[Integral]\\), \
+\\(0\\), \\(2  \[Pi]\\)]\\)\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, \
+0, 1]]\\)\[CenterDot]dr=\\!\\(\\*SubsuperscriptBox[\\(\[Integral]\\), \
+\\(0\\), \\(2  \[Pi]\\)]\\)\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, \
+0, 1]]\\)\[CenterDot]\\!\\(\\*StyleBox[\\\"T\\\",FontColor->RGBColor[0, 1, \
+0]]\\)ds=\\!\\(\\*SubsuperscriptBox[\\(\[Integral]\\), \\(0\\), \\(2  \
+\[Pi]\\)]\\)\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, 0, 1]]\\)\
+\[CenterDot]\\!\\(\\*StyleBox[\\\"r\\\",FontColor->RGBColor[0, 1, \
+0]]\\)\\!\\(\\*StyleBox[\\\"'\\\",FontColor->RGBColor[0, 1, 0]]\\)dt=0\"\>",
+  StripOnInput->False,
+  FontSize->16,
+  FontWeight->Bold]], "Print",
+ CellChangeTimes->{
+  3.8205872925612907`*^9, 3.820589375832654*^9, {3.820589433540721*^9, 
+   3.8205894484977427`*^9}, 3.8205895010319443`*^9},
+ CellLabel->
+  "During evaluation of \
+In[339]:=",ExpressionUUID->"c87e1515-ba00-4957-819f-8a2ea2294bf9"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["The case for r = 10 ", "Text",
+ CellChangeTimes->{{3.8206003408075666`*^9, 
+  3.8206003595858603`*^9}},ExpressionUUID->"b264e907-afa3-454e-a73a-\
+a04c53534c5f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs\:f040", "\"\<VectorAnalysis`\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{"V", ",", "T", ",", "r", ",", "x", ",", "y"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Vector Field\>\"", ";", 
+  RowBox[{
+   RowBox[{"V", "[", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"{", 
+      RowBox[{"y", ",", "x"}], "}"}], 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Curve\>\"", ";", 
+  RowBox[{
+   RowBox[{"r", "[", "t_", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2"}], " ", "+", 
+      RowBox[{"10", "  ", 
+       RowBox[{"Cos", "[", "t", "]"}]}]}], ",", 
+     RowBox[{"3", "+", 
+      RowBox[{"10", "  ", 
+       RowBox[{"Sin", "[", "t", "]"}]}]}]}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"Tn", "[", "t_", "]"}], ":=", 
+   RowBox[{"Normalize", "[", 
+    RowBox[{
+     SuperscriptBox["r", "\[Prime]",
+      MultilineFunction->None], "[", "t", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Curve Range\>\"", ";", 
+  RowBox[{"a", "=", "0"}], ";", 
+  RowBox[{"b", "=", 
+   RowBox[{"2", "\[Pi]"}]}], ";", "\"\<Curve Grid\>\"", ";", 
+  RowBox[{"n", "=", "50"}], ";", 
+  RowBox[{"s", "=", 
+   FractionBox[
+    RowBox[{"b", "-", "a"}], "n"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Integrand", "=", 
+   RowBox[{"Simplify", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"V", "[", 
+       RowBox[{"r", "[", "t", "]"}], "]"}], ".", 
+      RowBox[{
+       SuperscriptBox["r", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}]}], ",", 
+     RowBox[{"Assumptions", "\[Rule]", 
+      RowBox[{"a", "\[LessEqual]", "t", "\[LessEqual]", "b"}]}]}], "]"}]}], 
+  ";", 
+  RowBox[{"LI", "=", 
+   RowBox[{"Round", "[", 
+    RowBox[{
+     RowBox[{"NIntegrate", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"V", "[", 
+         RowBox[{"r", "[", "t", "]"}], "]"}], ".", 
+        RowBox[{
+         SuperscriptBox["r", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "a", ",", "b"}], "}"}], ",", 
+       RowBox[{"AccuracyGoal", "\[Rule]", "5"}]}], "]"}], ",", "5"}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "    ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{
+     "\"\<\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, 1]]\)=\>\"", ",", 
+      "Bold", ",", "16"}], "]"}], " ", ",", "   ", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"V", "[", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], "]"}], ",", "Bold", ",", "16"}], 
+     "]"}], ",", " ", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+     "\"\<   V\[CenterDot]\!\(\*StyleBox[\"T\",FontColor->RGBColor[0, 1, \
+0]]\)ds=V\[CenterDot]dr=\>\"", ",", "Bold", ",", "16"}], "]"}], " ", ",", 
+    "  ", 
+    RowBox[{"Style", "[", 
+     RowBox[{"Integrand", ",", "Bold", ",", "16"}], "]"}]}], "  ", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+    "\"\<Line Integral: \!\(\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(2  \
+\[Pi]\)]\)\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, 1]]\)\[CenterDot]dr=\
+\!\(\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(2  \
+\[Pi]\)]\)\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, \
+1]]\)\[CenterDot]\!\(\*StyleBox[\"T\",FontColor->RGBColor[0, 1, \
+0]]\)ds=\!\(\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(2  \
+\[Pi]\)]\)\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, \
+1]]\)\[CenterDot]\!\(\*StyleBox[\"r\",FontColor->RGBColor[0, 1, \
+0]]\)\!\(\*StyleBox[\"'\",FontColor->RGBColor[0, 1, 0]]\)dt=0\>\"", ",", 
+     "Bold", ",", "16"}], "]"}], "]"}], " "}]}], "Input",
+ CellChangeTimes->{{3.820600335056055*^9, 3.8206003764865913`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"32d9107e-fa26-449e-b66c-eb1bd17a86c5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox["\<\"\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, 0, \
+1]]\\)=\"\>",
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold], "\[InvisibleSpace]", 
+   StyleBox[
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["y", 
+        RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}]]}], ",", 
+      RowBox[{"-", 
+       FractionBox["x", 
+        RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}]]}]}], "}"}],
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold], "\[InvisibleSpace]", 
+   StyleBox["\<\"   \
+V\[CenterDot]\\!\\(\\*StyleBox[\\\"T\\\",FontColor->RGBColor[0, 1, 0]]\\)ds=V\
+\[CenterDot]dr=\"\>",
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold], "\[InvisibleSpace]", 
+   StyleBox[
+    FractionBox[
+     RowBox[{"10", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", " ", 
+         RowBox[{"Cos", "[", "t", "]"}]}], "-", 
+        RowBox[{"10", " ", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"2", " ", "t"}], "]"}]}], "+", 
+        RowBox[{"3", " ", 
+         RowBox[{"Sin", "[", "t", "]"}]}]}], ")"}]}], 
+     RowBox[{"113", "-", 
+      RowBox[{"40", " ", 
+       RowBox[{"Cos", "[", "t", "]"}]}], "+", 
+      RowBox[{"60", " ", 
+       RowBox[{"Sin", "[", "t", "]"}]}]}]],
+    StripOnInput->False,
+    FontSize->16,
+    FontWeight->Bold]}],
+  SequenceForm[
+   Style["\!\(\*StyleBox[\"V\",FontColor->RGBColor[0, 0, 1]]\)=", Bold, 16], 
+   Style[{-$CellContext`y/($CellContext`x^2 + $CellContext`y^2), \
+-$CellContext`x/($CellContext`x^2 + $CellContext`y^2)}, Bold, 16], 
+   Style["   V\[CenterDot]\!\(\*StyleBox[\"T\",FontColor->RGBColor[0, 1, \
+0]]\)ds=V\[CenterDot]dr=", Bold, 16], 
+   Style[10 (2 Cos[$CellContext`t] - 10 Cos[2 $CellContext`t] + 
+     3 Sin[$CellContext`t])/(113 - 40 Cos[$CellContext`t] + 
+    60 Sin[$CellContext`t]), Bold, 16]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.820600370997328*^9, 3.820600377965822*^9}},
+ CellLabel->
+  "During evaluation of \
+In[9]:=",ExpressionUUID->"c1d2d099-2cc1-4102-8d26-10a9bb11e4bf"],
+
+Cell[BoxData[
+ StyleBox["\<\"Line Integral: \\!\\(\\*SubsuperscriptBox[\\(\[Integral]\\), \
+\\(0\\), \\(2  \[Pi]\\)]\\)\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, \
+0, 1]]\\)\[CenterDot]dr=\\!\\(\\*SubsuperscriptBox[\\(\[Integral]\\), \
+\\(0\\), \\(2  \[Pi]\\)]\\)\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, \
+0, 1]]\\)\[CenterDot]\\!\\(\\*StyleBox[\\\"T\\\",FontColor->RGBColor[0, 1, \
+0]]\\)ds=\\!\\(\\*SubsuperscriptBox[\\(\[Integral]\\), \\(0\\), \\(2  \
+\[Pi]\\)]\\)\\!\\(\\*StyleBox[\\\"V\\\",FontColor->RGBColor[0, 0, 1]]\\)\
+\[CenterDot]\\!\\(\\*StyleBox[\\\"r\\\",FontColor->RGBColor[0, 1, \
+0]]\\)\\!\\(\\*StyleBox[\\\"'\\\",FontColor->RGBColor[0, 1, 0]]\\)dt=0\"\>",
+  StripOnInput->False,
+  FontSize->16,
+  FontWeight->Bold]], "Print",
+ CellChangeTimes->{{3.820600370997328*^9, 3.820600377966981*^9}},
+ CellLabel->
+  "During evaluation of \
+In[9]:=",ExpressionUUID->"47c441e0-3e0e-4359-9722-836c09f7e557"]
+}, Open  ]],
+
+Cell["\<\
+Use Stokes\[CloseCurlyQuote]s Theorem to obtain the same answer via the \
+corresponding surface integral
+\
+\>", "Section",
+ CellChangeTimes->{{3.820586610237729*^9, 3.820586631556142*^9}, 
+   3.820586663302589*^9, {3.8205874721544037`*^9, 3.820587501881701*^9}, {
+   3.820587579922865*^9, 
+   3.820587580353969*^9}},ExpressionUUID->"d90a8384-a7e1-4bee-824a-\
+53387442e370"],
+
+Cell["\<\
+Next, we use Stokes\[CloseCurlyQuote]s Theorem to obtain the same answer via \
+the corresponding surface integral. The parametrization of the circle of \
+radius r is given by S(u,v) = {x(u,v),y(u.v)} where: 
+x= r cos u sin v , y = r sin u sin v. \
+\>", "Text",
+ CellChangeTimes->{{3.8205866399428787`*^9, 3.820586683778153*^9}, {
+  3.820587304935852*^9, 3.820587314967025*^9}, {3.820587369093433*^9, 
+  3.8205873974538097`*^9}, {3.8205876249160767`*^9, 
+  3.820587744346323*^9}},ExpressionUUID->"710d04d4-10aa-4a8c-883b-\
+0fe642dbbb00"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{"S", ",", "u", ",", "v", ",", "Tu", ",", "Tv", ",", "n"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Vector Field\>\"", ";", 
+  RowBox[{
+   RowBox[{"V", "[", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"{", 
+      RowBox[{"y", ",", "x"}], "}"}], 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Curve\>\"", ";", 
+  RowBox[{
+   RowBox[{"S", "[", 
+    RowBox[{"u", ",", "v"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2"}], " ", "+", 
+      RowBox[{"2", " ", 
+       RowBox[{"Cos", "[", "u", "]"}], " ", 
+       RowBox[{"Sin", "[", "v", "]"}]}]}], ",", 
+     RowBox[{"3", "+", 
+      RowBox[{"2", "  ", 
+       RowBox[{"Sin", "[", "u", "]"}], " ", 
+       RowBox[{"Sin", "[", "v", "]"}]}]}]}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"Tn", "[", "t_", "]"}], ":=", 
+   RowBox[{"Normalize", "[", 
+    RowBox[{
+     SuperscriptBox["r", "\[Prime]",
+      MultilineFunction->None], "[", "t", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tu", " ", "[", 
+    RowBox[{"u_", ",", "v_"}], "]"}], ":=", " ", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"S", "[", 
+      RowBox[{"u", ",", "v"}], "]"}], ",", "u"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tv", "[", 
+    RowBox[{"u_", ",", "v_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"S", "[", 
+      RowBox[{"u", ",", "v"}], "]"}], ",", "v"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"n", "[", 
+    RowBox[{"u_", ",", "v_"}], "]"}], ":=", " ", 
+   RowBox[{"Cross", "[", 
+    RowBox[{
+     RowBox[{"Tv", "[", 
+      RowBox[{"u", ",", "v"}], "]"}], ",", 
+     RowBox[{"Tu", "[", 
+      RowBox[{"u", ",", "v"}], "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"S", "[", 
+        RowBox[{"u", ",", "v"}], "]"}], ",", "u"}], "]"}], ",", " ", 
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"S", "[", 
+        RowBox[{"u", ",", "v"}], "]"}], ",", "v"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Integral", " ", "=", " ", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", 
+     RowBox[{"2", "\[Pi]"}]], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", 
+      RowBox[{"2", "\[Pi]"}]], 
+     RowBox[{
+      RowBox[{"F", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"S", "[", 
+          RowBox[{"u", ",", "v"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"S", "[", 
+          RowBox[{"u", ",", "v"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "]"}], 
+      RowBox[{"\[DifferentialD]", "u"}], " ", 
+      RowBox[{"\[DifferentialD]", "v"}]}]}]}]}], 
+  " "}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.8205867034432573`*^9, 3.820586885304966*^9}, 
+   3.820586960412599*^9, {3.8205870940318604`*^9, 3.820587291828858*^9}, {
+   3.8205882404545517`*^9, 3.8205882480390463`*^9}, {3.820588507409459*^9, 
+   3.820588558862904*^9}, {3.8205886122714252`*^9, 3.82058883039221*^9}, {
+   3.8205888606610622`*^9, 3.820588895576383*^9}, {3.820589176310297*^9, 
+   3.820589310414565*^9}, {3.820589530836409*^9, 3.820589533012347*^9}, {
+   3.820590744216228*^9, 3.820590921115634*^9}, {3.820591042930331*^9, 
+   3.82059105516007*^9}, {3.820591089193585*^9, 3.820591122426981*^9}, {
+   3.820591255408338*^9, 
+   3.820591285882226*^9}},ExpressionUUID->"b3cf7318-56f7-473f-9408-\
+b9f960187cf9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.82058884295092*^9, 3.820588884004463*^9}, 
+   3.820589319473675*^9, 3.820589505078157*^9, 3.820589535921926*^9, 
+   3.8205909263431263`*^9, {3.820591044667914*^9, 3.8205910558188667`*^9}, 
+   3.820591123479607*^9, 3.820591275390367*^9},
+ CellLabel->
+  "Out[422]=",ExpressionUUID->"8f6b9236-664d-4dbe-a04c-fae65023877c"]
+}, Open  ]],
+
+Cell["\<\
+Another code that works is 
+\
+\>", "Text",
+ CellChangeTimes->{{3.82059136682985*^9, 
+  3.820591385543035*^9}},ExpressionUUID->"fa3a8e3b-5777-4c2f-9958-\
+586af661b22e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"{", 
+      RowBox[{"y", ",", "x"}], "}"}], 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"]}]]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GradF", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{"x", ",", "y"}], "]"}], ",", "x"}], "]"}], ",", 
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{"x", ",", "y"}], "]"}], ",", "y"}], "]"}]}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FPrime", "[", 
+    RowBox[{"r_", ",", "\[Phi]_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"GradF", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], ",", "x"}], "]"}], "-", 
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"GradF", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", "y"}], "]"}]}], ")"}], "/.", 
+    " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"x", "\[Rule]", 
+       RowBox[{"r", " ", 
+        RowBox[{"Cos", "[", "\[Phi]", "]"}]}]}], ",", 
+      RowBox[{"y", "\[Rule]", 
+       RowBox[{"r", " ", 
+        RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}]}], "}"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"I1", "[", "\[Phi]_", "]"}], "=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"r", " ", 
+      RowBox[{"FPrime", "[", 
+       RowBox[{"r", ",", "\[Phi]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "a"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"I1", "[", "\[Phi]", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]", ",", "0", ",", 
+     RowBox[{"2", " ", "\[Pi]"}]}], "}"}]}], "]"}], "\n"}], "Input",
+ CellChangeTimes->{{3.82059117789751*^9, 3.820591194180681*^9}},
+ CellLabel->
+  "In[423]:=",ExpressionUUID->"b7c637d5-bef6-40ad-b7cb-5fcbfad5645f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.820591413877852*^9},
+ CellLabel->
+  "Out[427]=",ExpressionUUID->"14660514-3b60-4773-a5af-661e88437fce"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0"}], "}"}], "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->
+  "In[428]:=",ExpressionUUID->"fe616d7c-1128-42b7-851d-ac1a59d25e9c"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.820591416765088*^9},
+ CellLabel->
+  "Out[428]=",ExpressionUUID->"674ca1ea-b769-43b4-a8e7-526b82b63334"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["This confirms our result that both methods gives zero. ", "Subtitle",
+ CellChangeTimes->{{3.820591312739992*^9, 
+  3.820591346830679*^9}},ExpressionUUID->"9d67bc78-b94f-4397-8975-\
+f75c8f1256e7"]
+},
+CellGrouping->Manual,
+WindowSize->{1440, 765},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"12.2 for Mac OS X x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"DemoText.nb",
+ExpressionUUID->"f1065e7e-5d35-4724-a027-21e100e467bd"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 157, 3, 35, "Subtitle",ExpressionUUID->"e8accbbc-e5f9-4145-bec2-250c9ac8947e"],
+Cell[718, 25, 118, 3, 23, "Text",ExpressionUUID->"8d38da49-4190-47a3-9264-341e45d17c3e"],
+Cell[CellGroupData[{
+Cell[861, 32, 498, 13, 59, "Section",ExpressionUUID->"1eca0b80-d37c-4f65-a5b2-51220af8c16b"],
+Cell[1362, 47, 1077, 20, 187, "Text",ExpressionUUID->"bbb78aea-5f65-4760-9935-3db79996e329"],
+Cell[CellGroupData[{
+Cell[2464, 71, 4240, 115, 252, "Input",ExpressionUUID->"7bdd1981-e66b-4736-9fce-a6dcd68e046f"],
+Cell[6707, 188, 207, 4, 48, "Output",ExpressionUUID->"202cc353-a20c-4bbf-a8fb-d6c3d6510503"],
+Cell[6917, 194, 2170, 63, 55, "Print",ExpressionUUID->"2196d6b1-7aed-4d0a-9a18-09ca052fb8b6"],
+Cell[9090, 259, 1012, 18, 49, "Print",ExpressionUUID->"c87e1515-ba00-4957-819f-8a2ea2294bf9"]
+}, Open  ]]
+}, Open  ]],
+Cell[10129, 281, 166, 3, 23, "Text",ExpressionUUID->"b264e907-afa3-454e-a73a-a04c53534c5f"],
+Cell[CellGroupData[{
+Cell[10320, 288, 4035, 111, 252, "Input",ExpressionUUID->"32d9107e-fa26-449e-b66c-eb1bd17a86c5"],
+Cell[14358, 401, 2168, 63, 55, "Print",ExpressionUUID->"c1d2d099-2cc1-4102-8d26-10a9bb11e4bf"],
+Cell[16529, 466, 931, 16, 49, "Print",ExpressionUUID->"47c441e0-3e0e-4359-9722-836c09f7e557"]
+}, Open  ]],
+Cell[17475, 485, 383, 9, 70, "Section",ExpressionUUID->"d90a8384-a7e1-4bee-824a-53387442e370"],
+Cell[17861, 496, 546, 10, 50, "Text",ExpressionUUID->"710d04d4-10aa-4a8c-883b-0fe642dbbb00"],
+Cell[CellGroupData[{
+Cell[18432, 510, 3838, 114, 233, "Input",ExpressionUUID->"b3cf7318-56f7-473f-9408-b9f960187cf9"],
+Cell[22273, 626, 513, 12, 48, "Output",ExpressionUUID->"8f6b9236-664d-4dbe-a04c-fae65023877c"]
+}, Open  ]],
+Cell[22801, 641, 177, 6, 51, "Text",ExpressionUUID->"fa3a8e3b-5777-4c2f-9958-586af661b22e"],
+Cell[CellGroupData[{
+Cell[23003, 651, 2214, 73, 155, "Input",ExpressionUUID->"b7c637d5-bef6-40ad-b7cb-5fcbfad5645f"],
+Cell[25220, 726, 198, 5, 48, "Output",ExpressionUUID->"14660514-3b60-4773-a5af-661e88437fce"],
+Cell[CellGroupData[{
+Cell[25443, 735, 209, 6, 38, "Input",ExpressionUUID->"fe616d7c-1128-42b7-851d-ac1a59d25e9c"],
+Cell[25655, 743, 153, 3, 48, "Output",ExpressionUUID->"674ca1ea-b769-43b4-a8e7-526b82b63334"]
+}, Open  ]]
+}, Open  ]],
+Cell[25835, 750, 201, 3, 35, "Subtitle",ExpressionUUID->"9d67bc78-b94f-4397-8975-f75c8f1256e7"]
+}
+]
+*)
+
