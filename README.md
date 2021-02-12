@@ -18,3 +18,7 @@ Jupyter Notebook for 1-D Ising Model simulation
 4 - [IBM Quantum Computer Exercise](https://github.com/MohamedElashri/Physics/blob/master/IBM%20Quantum%20Computer%20exercise.ipynb) (Python)
 
 Using IBM open source SDK for using their IBM Q QC. available online for free at [IBM Computing Center](https://quantum-computing.ibm.com/)
+
+5 - [Line Integral along a Path](https://github.com/MohamedElashri/Physics/blob/master/Line%20Integral.nb) (Mathematica)
+
+The code below is designed to computer a line integral along a path, defined by r(t)=<x(t),y(t)>, through a vector field, accumulating the dot products of the tangent vectors with the field vectors along the path When the vector field represents a force field, 
