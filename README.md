@@ -27,6 +27,6 @@ The code below is designed to computer a line integral along a path, defined by 
 
 Using master equation to develop SIR model for the spread of COVID-19 among population. 
 
-6. [Anisotripic Universe Evolution Simulation  ](https://github.com/MohamedElashri/Physics/blob/master/GR.py) (Python)
+7. [Anisotripic Universe Evolution Simulation  ](https://github.com/MohamedElashri/Physics/blob/master/GR.py) (Python)
 
 Numerical evolution of a Bianchi  universe with anisotripic stress energy with trivial initial conditions.
