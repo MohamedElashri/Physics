@@ -30,3 +30,7 @@ Using master equation to develop SIR model for the spread of COVID-19 among popu
 7. [Anisotripic Universe Evolution Simulation  ](https://github.com/MohamedElashri/Physics/blob/master/GR.py) (Python)
 
 Numerical evolution of a Bianchi  universe with anisotripic stress energy with trivial initial conditions.
+
+8. [2d-Ising Monte-Carlo Simulation](https://github.com/MohamedElashri/Physics/blob/master/2d_ising.py) (Python)
+
+Monte-Carlo simulation of 2D ising model without magnetic field. with plots to important physical parameters (Energy, Mangtization and Specific heat)
