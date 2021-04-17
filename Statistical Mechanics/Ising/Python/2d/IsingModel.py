@@ -74,6 +74,7 @@ import time # for time estimation
 from tqdm import tqdm # fancy progress bars for loops , use this line if working with .py script
 #from tqdm.notebook import tqdm # use this if working with jupyter notebook to avoid printing a new line for each iteration
 from rich.progress import track # we can use amazin rich library to do the same (more interesting output) change "tqdm" later to "track"
+# I use rich instead of tqdm main because tqdm doesn't play well with my favourite terminal (Iterm2). 
 
 # Define parameters 
 
