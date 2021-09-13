@@ -1,0 +1,380 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13384,        372]
+NotebookOptionsPosition[     12269,        345]
+NotebookOutlinePosition[     12666,        361]
+CellTagsIndexPosition[     12623,        358]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Perturbation Theory", "Section",
+ CellChangeTimes->{{3.828876976158167*^9, 
+  3.828876986731514*^9}},ExpressionUUID->"ea6b76ff-ec87-40ef-a9cf-\
+7b54bd62fd7c"],
+
+Cell["\<\
+This is a code that can be used to calculate the first and second order \
+corrections for eigenvalues and eigenfunction of quantum system due to small \
+perturbation. The implemented method is the time Independent  perturbation \
+theory.  There is example to explain how to use this code at the end.
+H0 = Unperturbed Hamiltonian
+H1= Perturbed Hamiltonian
+order = The correction order (zeroth, first or second)
+state = The specific state we calculate the correction for. 
+
+Usage: There are two functions in this code. 
+PTEigenvalue: for calculating the Eigenvalues (energy) corrections and take \
+the form 
+PTEigenvalue[state,H0,H1,order]
+PTEigenvector: for calculating the Eigenfunctions (wavefunctions) corrections \
+and take the form 
+PTEigenvector[state,H0,H1,order]
+with order taking the values {0,1,2} corresponding to nonperturbed, first \
+order and second order respectively. \
+\>", "Text",
+ CellChangeTimes->{{3.828877018933176*^9, 
+  3.828877461685172*^9}},ExpressionUUID->"d4e81272-b93c-43e9-aab1-\
+2bcd081c2952"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PTEigenvalue", "[", 
+     RowBox[{
+     "state_", ",", "hamiltonian0_", ",", "hamiltonian1_", ",", "order_"}], 
+     "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"pten", "[", "i", "]"}], "[", 
+       RowBox[{"state", ",", "hamiltonian0", ",", "hamiltonian1"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "order"}], "}"}]}], "]"}]}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"pten", "[", "0", "]"}], "[", 
+     RowBox[{"state_", ",", "hamiltonian0_", ",", "hamiltonian1_"}], "]"}], ":=", 
+    RowBox[{"hamiltonian0", "[", 
+     RowBox[{"[", 
+      RowBox[{"state", ",", "state"}], "]"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"pten", "[", "1", "]"}], "[", 
+     RowBox[{"state_", ",", "hamiltonian0_", ",", "hamiltonian1_"}], "]"}], ":=", 
+    RowBox[{"hamiltonian1", "[", 
+     RowBox[{"[", 
+      RowBox[{"state", ",", "state"}], "]"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"pten", "[", "2", "]"}], "[", 
+     RowBox[{"state_", ",", "hamiltonian0_", ",", "hamiltonian1_"}], "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"state", "\[Equal]", "j"}], ",", "0", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"hamiltonian1", "[", 
+           RowBox[{"[", 
+            RowBox[{"state", ",", "j"}], "]"}], "]"}], "^", "2"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"hamiltonian0", "[", 
+            RowBox[{"[", 
+             RowBox[{"state", ",", "state"}], "]"}], "]"}], "-", 
+           RowBox[{"hamiltonian0", "[", 
+            RowBox[{"[", 
+             RowBox[{"j", ",", "j"}], "]"}], "]"}]}], ")"}]}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", 
+        RowBox[{
+         RowBox[{"Dimensions", "[", "hamiltonian1", "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}]}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PTEigenvector", "[", 
+     RowBox[{
+     "state_", ",", "hamiltonian0_", ",", "hamiltonian1_", ",", "order_"}], 
+     "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"ptwf", "[", "i", "]"}], "[", 
+       RowBox[{"state", ",", "hamiltonian0", ",", "hamiltonian1"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "order"}], "}"}]}], "]"}]}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ptwf", "[", "0", "]"}], "[", 
+     RowBox[{"state_", ",", "hamiltonian0_", ",", "hamiltonian1_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"IdentityMatrix", "[", 
+      RowBox[{
+       RowBox[{"Dimensions", "[", "hamiltonian0", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+     RowBox[{"[", "state", "]"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ptwf", "[", "1", "]"}], "[", 
+     RowBox[{"state_", ",", "hamiltonian0_", ",", "hamiltonian1_"}], "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"e", ",", "h"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"h", "[", 
+         RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+        RowBox[{"hamiltonian1", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"e", "[", "i_", "]"}], ":=", 
+        RowBox[{"hamiltonian0", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "i"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"state", "\[Equal]", "k"}], ",", "0", ",", 
+           RowBox[{
+            RowBox[{"h", "[", 
+             RowBox[{"state", ",", "k"}], "]"}], "/", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"e", "[", "state", "]"}], "-", 
+              RowBox[{"e", "[", "k", "]"}]}], ")"}]}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "1", ",", 
+           RowBox[{
+            RowBox[{"Dimensions", "[", "hamiltonian1", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}]}]}], "]"}]}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ptwf", "[", "2", "]"}], "[", 
+     RowBox[{
+     "state_", ",", "hamiltonian0_", ",", "hamiltonian1_", ",", 
+      "hamiltonian2_"}], "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"e", ",", "h", ",", "h2", ",", "dim"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"dim", "=", 
+        RowBox[{
+         RowBox[{"Dimensions", "[", "hamiltonian1", "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h2", "[", 
+         RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+        RowBox[{"hamiltonian2", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h", "[", 
+         RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+        RowBox[{"hamiltonian1", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"e", "[", "i_", "]"}], ":=", 
+        RowBox[{"hamiltonian0", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "i"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"state", "\[Equal]", "j"}], ",", 
+           RowBox[{"Sum", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"l", "\[Equal]", "state"}], ",", "0", ",", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "1"}], "/", "2"}], ")"}], " ", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"h", "[", 
+                    RowBox[{"state", ",", "l"}], "]"}], " ", 
+                   RowBox[{"h", "[", 
+                    RowBox[{"state", ",", "l"}], "]"}]}], ")"}], "/", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"e", "[", "state", "]"}], "-", 
+                    RowBox[{"e", "[", "l", "]"}]}], ")"}], "^", "2"}], 
+                  ")"}]}]}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"l", ",", "1", ",", "dim"}], "}"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"h2", "[", 
+               RowBox[{"state", ",", "j"}], "]"}], ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"e", "[", "state", "]"}], "-", 
+               RowBox[{"e", "[", "j", "]"}]}], ")"}]}], "+", 
+            RowBox[{"Sum", "[", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"k", "\[Equal]", "state"}], ",", "0", ",", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"h", "[", 
+                    RowBox[{"j", ",", "k"}], "]"}], "*", 
+                   RowBox[{"h", "[", 
+                    RowBox[{"k", ",", "state"}], "]"}]}], ")"}], "/", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"e", "[", "state", "]"}], "-", 
+                    RowBox[{"e", "[", "k", "]"}]}], ")"}], " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"e", "[", "state", "]"}], "-", 
+                    RowBox[{"e", "[", "j", "]"}]}], ")"}]}], ")"}]}]}], "]"}],
+               ",", 
+              RowBox[{"{", 
+               RowBox[{"k", ",", "1", ",", "dim"}], "}"}]}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"h", "[", 
+                RowBox[{"state", ",", "state"}], "]"}], "*", 
+               RowBox[{"h", "[", 
+                RowBox[{"j", ",", "state"}], "]"}]}], ")"}], "/", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"e", "[", "state", "]"}], "-", 
+                RowBox[{"e", "[", "j", "]"}]}], ")"}], "^", "2"}]}]}]}], 
+          "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", "dim"}], "}"}]}], "]"}]}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8288714521906776`*^9, 3.82887150959024*^9}, 
+   3.828871637148114*^9, 3.8288769667134657`*^9, 
+   3.82887729229161*^9},ExpressionUUID->"11cb4c30-0eb3-48b8-ac66-\
+16a8bd513ea6"],
+
+Cell[CellGroupData[{
+
+Cell["Example: 3 x 3 matrix Hamiltonian.", "Subsection",
+ CellChangeTimes->{{3.8288769448861237`*^9, 
+  3.828876963588417*^9}},ExpressionUUID->"f8ecbe81-a036-4557-9c8f-\
+325a0632f0fe"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"H0", " ", "=", " ", 
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"1", "0", "0"},
+      {"0", "3", 
+       RowBox[{"\[Sqrt]", "2"}]},
+      {"0", "0", "3"}
+     }], "\[NoBreak]", ")"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"H1", "=", " ", 
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"g", "g", "0"},
+      {"0", 
+       RowBox[{"-", "g"}], 
+       RowBox[{
+        RowBox[{"Sqrt", "[", "2", "]"}], " ", "g"}]},
+      {"0", 
+       RowBox[{
+        RowBox[{"Sqrt", "[", "2", "]"}], " ", "g"}], "0"}
+     }], "\[NoBreak]", ")"}]}], ";"}]}], "Input",
+ CellLabel->
+  "In[109]:=",ExpressionUUID->"2214fda4-7682-4f7b-9111-957403bc23fc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PTEigenvalue", "[", 
+  RowBox[{"1", ",", "H0", ",", "H1", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.828877477344564*^9, 3.828877480488432*^9}},
+ CellLabel->
+  "In[112]:=",ExpressionUUID->"5a90db52-b9cd-4110-9299-ba61a856a391"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", "g", "-", 
+  FractionBox[
+   SuperscriptBox["g", "2"], "2"]}]], "Output",
+ CellChangeTimes->{3.82887153140851*^9, 3.828871646776763*^9, 
+  3.828877480834457*^9},
+ CellLabel->
+  "Out[112]=",ExpressionUUID->"ea7b800a-e4a3-4108-9794-b5a68811d85b"]
+}, Open  ]],
+
+Cell[BoxData["\[SZ]"], "Input",
+ CellChangeTimes->{
+  3.82887749336622*^9},ExpressionUUID->"70c3f3f6-14dc-456b-9869-c3d9308a49eb"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 665},
+WindowMargins->{{Automatic, 480}, {Automatic, 4}},
+FrontEndVersion->"12.2 for Mac OS X x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8f84583c-d072-4efa-aa63-69cbb381e66e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 164, 3, 67, "Section",ExpressionUUID->"ea6b76ff-ec87-40ef-a9cf-7b54bd62fd7c"],
+Cell[747, 27, 1033, 22, 334, "Text",ExpressionUUID->"d4e81272-b93c-43e9-aab1-2bcd081c2952"],
+Cell[1783, 51, 8867, 236, 724, "Input",ExpressionUUID->"11cb4c30-0eb3-48b8-ac66-16a8bd513ea6"],
+Cell[CellGroupData[{
+Cell[10675, 291, 184, 3, 54, "Subsection",ExpressionUUID->"f8ecbe81-a036-4557-9c8f-325a0632f0fe"],
+Cell[10862, 296, 670, 22, 127, "Input",ExpressionUUID->"2214fda4-7682-4f7b-9111-957403bc23fc"],
+Cell[CellGroupData[{
+Cell[11557, 322, 259, 5, 30, "Input",ExpressionUUID->"5a90db52-b9cd-4110-9299-ba61a856a391"],
+Cell[11819, 329, 277, 7, 53, "Output",ExpressionUUID->"ea7b800a-e4a3-4108-9794-b5a68811d85b"]
+}, Open  ]],
+Cell[12111, 339, 130, 2, 30, "Input",ExpressionUUID->"70c3f3f6-14dc-456b-9869-c3d9308a49eb"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
