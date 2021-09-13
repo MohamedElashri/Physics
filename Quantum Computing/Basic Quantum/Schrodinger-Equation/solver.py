@@ -14,12 +14,6 @@ def V(x):
 	Input : x : position for x
 	Output: Vx: Potential at position x"""
 
-	##########################################################################
-	### Because I want to plot the potential with input as an array          #
-	### Python gives error when doing "if" to an array                       #
-	### so I added this grand "if" to distinguish an array or a single number#
-	##########################################################################
-
 	### Different Output type (single float or array) depends on input type ###
 	if np.size(x) == 1:
 		### For a single number ###
@@ -35,7 +29,6 @@ def V(x):
 			else:
 				V[i] = 0
 		return V
-	print("Error, np.size(x)=", np.size(x))      # Debug if error
 	return 0
 
 def Schro_eq(r,x,E):
